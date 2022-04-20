@@ -9,7 +9,7 @@ void liberer_tab(Tab_dyn *tab){
 
 int init_tab_dyn(Tab_dyn *tab){
     tab->donnees = NULL;
-    tab->donnees = (void **)malloc(sizeof(void *) * TAILLE_INIT);
+    tab->donnees = (void **)malloc(TAILLE_INIT * sizeof(void *));
     if(NULL == tab->donnees){
         fprintf(stderr, "Erreur lors de l'allocation de la mémoire !\n");
         return 0;
@@ -22,7 +22,7 @@ int init_tab_dyn(Tab_dyn *tab){
 int ajouter_fin(Tab_dyn *tab, void *elem, void *(*allouer_elem)(const void *)){
     if(tab->taille_reelle >= tab->taille_max){
         tab->taille_max *= 2;
-        tab->donnees = (void **)realloc(tab->donnees, tab->taille_max * sizeof(int));
+        tab->donnees = (void **)realloc(tab->donnees, tab->taille_max * sizeof(void *));
         if(NULL == tab->donnees){
             fprintf(stderr, "Erreur lors de la réallocation de la mémoire !\n");
             liberer_tab(tab);
