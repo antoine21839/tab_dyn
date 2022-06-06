@@ -6,10 +6,9 @@ void appliquer_tab_dyn(Tab_dyn *tab, void (*appliquer)(void *)){
         appliquer(&tab->donnees[i]);
 }
 
-void liberer_tab(Tab_dyn **tab, void (*liberer_elem)(void *)){
-    appliquer_tab_dyn(*tab, liberer_elem);
-    free((*tab)->donnees);
-    *tab = NULL;
+void liberer_tab(Tab_dyn *tab, void (*liberer_elem)(void *)){
+    appliquer_tab_dyn(tab, liberer_elem);
+    free(tab->donnees);
 }
 
 int init_tab_dyn(Tab_dyn *tab){
