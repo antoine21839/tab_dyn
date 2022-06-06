@@ -11,8 +11,8 @@ typedef struct{
     void **donnees;
 }Tab_dyn;
 
-void appliquer_tab_dyn(Tab_dyn *tab, void (*appliquer)(void *));
-void liberer_tab_dyn(Tab_dyn *tab, void (*liberer_elem)(void *));
+void appliquer_tab_dyn(Tab_dyn *tab, void (*appliquer)(void **));
+void liberer_tab_dyn(Tab_dyn *tab, void (*liberer_elem)(void **));
 int init_tab_dyn(Tab_dyn *tab);
 int ajouter_fin(Tab_dyn *tab, void *elem, void *(*allouer_elem)(const void *));
 #endif
