@@ -29,14 +29,12 @@ int ajouter_fin(Tab_dyn *tab, void *elem, void *(*allouer_elem)(const void *)){
         tab->donnees = (void **)realloc(tab->donnees, tab->taille_max * sizeof(void *));
         if(NULL == tab->donnees){
             fprintf(stderr, "Erreur lors de la réallocation de la mémoire !\n");
-            liberer_tab(tab);
             return 0;
         }
     }
     tab->donnees[tab->taille_reelle] = allouer_elem(elem);
     if(NULL == tab->donnees[tab->taille_reelle]){
         fprintf(stderr, "Erreur lors de l'ajout d'un élément dans le tableau dynamique !\n");
-        liberer_tab(tab);
         return 0;
     }
     ++tab->taille_reelle;
