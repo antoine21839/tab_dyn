@@ -1,12 +1,12 @@
 #include "Tableau_dynamique.h"
 
-void appliquer_tab_dyn(Tab_dyn *tab, void (*appliquer)(void *)){
+void appliquer_tab_dyn(Tab_dyn *tab, void (*appliquer)(void **)){
     unsigned int i;
     for(i = 0; i < tab->taille_reelle; ++i)
         appliquer(&tab->donnees[i]);
 }
 
-void liberer_tab_dyn(Tab_dyn *tab, void (*liberer_elem)(void *)){
+void liberer_tab_dyn(Tab_dyn *tab, void (*liberer_elem)(void **)){
     appliquer_tab_dyn(tab, liberer_elem);
     free(tab->donnees);
 }
